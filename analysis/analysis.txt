@@ -1,22 +1,58 @@
-Your name
-Your netid
+Russell Meng
+xm21
 
 Copy/Paste results from PercolationStats using PercolationDFS
 
+grid	mean	stddev	time
+100	0.593	0.014	1.112
+200	0.591	0.010	14.273
+400	0.590	0.006	189.020
+
+my laptop is too slow to calculate them all
 
 Copy/Paste results from PercolationStats using PercolationDFSFast
-
+grid	mean	stddev	time
+100	0.593	0.014	0.071
+200	0.591	0.010	0.107
+400	0.590	0.006	0.554
+800	0.594	0.004	3.751
 
 Copy/Paste results from PercolationStats using PercolationBFS
-
+simulation data for 20 trials
+grid	mean	stddev	time
+100	0.593	0.014	0.072
+200	0.591	0.010	0.207
+400	0.590	0.006	1.500
+800	0.594	0.004	11.338
+1600	0.592	0.002	81.226
 
 Copy/Paste results from PercolationStats using PercolationUF 
 with the QuickUWPC UnionFind implementation.
-
+simulation data for 20 trials
+grid	mean	stddev	time
+100	0.593	0.014	0.066
+200	0.591	0.010	0.098
+400	0.590	0.006	0.295
+800	0.594	0.004	1.836
+1600	0.592	0.002	10.029
+3200	0.593	0.001	54.268
 1. How does doubling the grid size affect running time (keeping # trials fixed)
+for the DFS, as far as I can observe from my data, every time the grid size double, the time is increased by around 14 times.
+for the DFSF,every time the grid size double, the time is increased by around 1.5-7 times, and the effect becomes bigger as the size becomes bigger.
+for the BFS, every time the grid size double, the time is increased by around 3-8 times, and the effect becomes bigger as the size becomes bigger.
+for the UF,every time the grid size double, the time is increased by around 1.5-5.5 times, and the effect becomes bigger as the size becomes bigger.
 
 
 2. How does doubling the number of trials affect running time.
-
+simulation data for 10 trials
+grid	mean	stddev	time
+100	0.593	0.019	0.050
+200	0.596	0.006	0.096
+400	0.592	0.006	0.799
+800	0.592	0.003	5.715
+a example of bfs
+makes the running time longer around O(trials)
 
 3. Estimate the largest grid size you can run in 24 hours with 20 trials. Explain your reasoning.
+for dfs 3200 
+1day = 3600x24s 
