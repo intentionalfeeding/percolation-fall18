@@ -20,11 +20,12 @@ grid	mean	stddev	time
 Copy/Paste results from PercolationStats using PercolationBFS
 simulation data for 20 trials
 grid	mean	stddev	time
-100	0.593	0.014	0.072
-200	0.591	0.010	0.207
-400	0.590	0.006	1.500
-800	0.594	0.004	11.338
-1600	0.592	0.002	81.226
+100	0.593	0.014	0.071
+200	0.591	0.010	0.137
+400	0.590	0.006	1.353
+800	0.594	0.004	10.487
+1600	0.592	0.002	78.785
+3200	0.593	0.001	624.714
 
 Copy/Paste results from PercolationStats using PercolationUF 
 with the QuickUWPC UnionFind implementation.
@@ -40,7 +41,7 @@ grid	mean	stddev	time
 for the DFS, as far as I can observe from my data, every time the grid size double, the time is increased by around 14 times.
 for the DFSF,every time the grid size double, the time is increased by around 1.5-7 times, and the effect becomes bigger as the size becomes bigger.
 for the BFS, every time the grid size double, the time is increased by around 3-8 times, and the effect becomes bigger as the size becomes bigger.
-for the UF,every time the grid size double, the time is increased by around 1.5-5.5 times, and the effect becomes bigger as the size becomes bigger.
+for the UF,every time the grid size double, the time is increased by around 1.5-6 times, and the effect becomes bigger as the size becomes bigger.
 
 
 2. How does doubling the number of trials affect running time.
@@ -50,9 +51,19 @@ grid	mean	stddev	time
 200	0.596	0.006	0.096
 400	0.592	0.006	0.799
 800	0.592	0.003	5.715
+1600	0.594	0.002	42.566
+3200	0.593	0.001	324.226
 a example of bfs
-makes the running time longer around O(trials)
+
+In this example of BFS, the 10 trials take approximately half the time of 20 trials. so the runtime and #trials has a linear relationship.
 
 3. Estimate the largest grid size you can run in 24 hours with 20 trials. Explain your reasoning.
-for dfs 3200 
-1day = 3600x24s 
+
+for the fastest one, the UF one:
+there are 3600*24s = 86400s in a day,
+suppose every double in grid size will cause the runtime to be multiplied by 6 as we observed
+take grid size =1600 and runtime = 10,
+10 * 6^x = 86400
+x = log6(8640)
+so gridsize max = 1600*2^x = 53330.
+
